@@ -1,0 +1,189 @@
+%\documentclass[twocolumn,preprintnumbers,amsmath,amssymb]{revtex4-1}
+%\documentclass[aps,prl,reprint,amsmath,amssymb]{revtex4-1}
+\documentclass[floatfix,showpacs,amsmath,amsfonts,amssymb,aps,twocolumn, prb,groupedaddress]{revtex4-1}
+
+\usepackage[table,x11names]{xcolor}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{amsthm}
+\usepackage{bm}% bold math
+\usepackage{siunitx}
+\usepackage{nicefrac}
+\usepackage{todonotes}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{makecell} 
+\usepackage{multirow}
+\usepackage{braket}
+
+\definecolor{darkred}{rgb}{0.6,0.,0.}
+\definecolor{darkgreen}{rgb}{0.,0.5,0.}
+\definecolor{darkblue}{rgb}{0.,0.,0.6}
+\usepackage[ breaklinks, colorlinks=true, linkcolor=darkred, citecolor=darkgreen, urlcolor=darkblue]{hyperref}
+
+\newcommand{\inputgnuplottex}[1]{\input{#1}}
+\newcommand{\includegraphicsgood}{\includegraphics}
+
+\usepackage[inactive,tightpage]{preview}
+%\PreviewBorder=12pt\relax
+\PreviewBorder=0pt
+\PreviewMacro[*[[!]{\inputgnuplottex}
+\PreviewMacro[*[[!]{\includegraphicsgood}
+%\renewcommand \PreviewBbAdjust{-12pt -\PreviewBorder -12pt \PreviewBorder}
+
+\newcommand{\figref}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\secref}[1]{Section~\ref{sec:#1}}
+\newcommand{\eqnref}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand\papercomment[1]{\textcolor{teal}{***#1}}
+\newcommand{\AuGe}{$\mathrm{Au}_x\mathrm{Ge}_{1-x}$\,}
+\newcommand{\AuGex}[2]{$\mathrm{Au}_{#1}\mathrm{Ge}_{#2}$\,}
+\newcommand{\rhoxx}{\rho_{\mathrm{xx}}}
+\newcommand{\rhoxy}{\rho_{\mathrm{xy}}}
+\newcommand{\dd}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\ddd}[2]{\ensuremath{\operatorname{d}^{#2}\!{#1}}}
+\newcommand{\pdb}[2]{\frac{\partial #1}{\partial #2}}
+\DeclareRobustCommand{\orderof}{\ensuremath{\mathcal{O}}}
+\newcommand{\dBbydt}{\nicefrac{\dd{B}}{\dd{t}}}
+\newcommand{\Beff}{\textbf{B}^{\mathrm{eff}}}
+\newcommand{\kF}{k_\mathrm{F}}
+\newcommand{\kr}{k_\mathrm{r}}
+\newcommand{\krF}{k_\mathrm{r}^\mathrm{F}}
+\newcommand{\kz}{k_\mathrm{z}}
+\newcommand{\epsr}{\epsilon_\mathrm{r}}
+\newcommand{\epsk}{\epsilon_\mathrm{k}}
+\newcommand{\epsf}{\epsilon_\mathrm{F}}
+\newcommand{\ek}{\epsilon_\mathrm{k}}
+\newcommand{\ekr}{\epsilon_{\kr}}
+\newcommand{\ekrF}{\epsilon_{\krF}}
+\newcommand{\ekz}{\epsilon_{\kz}}
+\newcommand{\eL}{\epsilon_{\lambda}}
+\newcommand{\eF}{\epsilon_\textrm{F}}
+\newcommand{\wwF}{\sqrt{b^2 + 2\ekrF\eL}}
+\newcommand{\vB}{\mathbf{B}}
+\newcommand{\vD}{\mathbf{\Delta}}
+\newcommand{\nn}{\hat{\mathbf{n}}}
+\newcommand{\sigmatot}{\sigma^{\mathrm{tot}}}
+\newcommand{\punc}[1]{\,#1}
+\newcommand{\diffd}{\text{d}}
+
+\newcommand{\e}[1]{\text{e}^{#1}}
+\newcommand{\cmplxi}{\text{i}}
+\newcommand{\dr}{\,\mathrm{d}\mathbf{r}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\neweqnline}{\nonumber\\}
+\newcommand{\vecgrk}[1]{\boldsymbol{#1}}
+%\newcommand{\ket}[1]{|#1\rangle}
+
+\graphicspath{{./figures/}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\onecolumngrid
+
+\begin{center}
+	\textbf{\large Effective Abelian order from non-Abelian fractional quantum Hall states in the Hofstadter model}
+\end{center}
+\vspace{-1em}
+\tableofcontents
+\vspace{1em}
+
+The single-particle Hamiltonian for the Hofstadter model in this project is given as
+\begin{equation}
+\label{eq:single_ham}
+H_0 = \sum_{\braket{ij}} \left[ t e^{\mathrm{i}\theta_{ij}} a_i^\dagger a_j + \text{H.c.} \right],
+\end{equation}
+where $t$ is the hopping amplitude, $e^{\mathrm{i}\theta_{ij}}$ is the Peierls phase factor, $a^\dagger(a)$ are generic creation(annihilation) operators, and $\braket{ij}$ denotes nearest-neighbor hoppings on a square lattice. The total Hamiltonian is given as $H=H_0+H_I$, where $H_I$ is the interaction Hamiltonian. Since the kinetic energy in a given Landau level is quenched for the fractional quantum Hall effect, the physics is governed by $H_I$.
+
+In each case below, we compute the topological entanglement entropy from an extrapolation of the area law of entanglement to the thermodynamic limit.
+
+\section{Investigation of Abelian states}
+
+For Abelian states, the topological entanglement entropy is given as $\gamma=\ln(\sqrt{s})$ at fillings $\nu=r/s$.~\cite{Estienne15}
+
+\subsection{Laughlin states}
+
+\subsubsection{Hardcore bosons at $\nu=1/2$}
+
+\begin{equation}
+H_I = U \sum_i \rho_i \rho_i,
+\end{equation}
+where $\rho=a^\dagger a$ is the density operator and $U=\infty$.
+
+\subsubsection{NN fermions at $\nu=1/3$}
+
+\begin{equation}
+H_I = V \sum_{\braket{ij}} \rho_i \rho_j,
+\end{equation}
+where $V=10$.
+
+We can compare this graph directly with Fig. 3 in the paper by Schoonderwoerd et al.~\cite{Schoonder19}.
+
+\subsection{Hierarchy states}
+
+\subsubsection{Hardcore bosons at $\nu=2/3$}
+
+\begin{equation}
+H_I = U \sum_i \rho_i \rho_i,
+\end{equation}
+where $\rho=a^\dagger a$ is the density operator and $U=\infty$.
+
+\subsubsection{NN fermions at $\nu=2/5$}
+
+\begin{equation}
+H_I = V \sum_{\braket{ij}} \rho_i \rho_j,
+\end{equation}
+where $V=10$.
+
+\section{Investigation of non-Abelian states}
+
+\subsection{Unitary states}
+
+For Moore-Read states, the topological entanglement entropy is given as $\gamma=\ln (2\sqrt{s})$ at fillings $\nu=1/s$, where $s$ is odd for bosons and even for fermions.~\cite{Glasser15}
+
+\subsubsection{Bosonic Moore-Read state at $\nu=1$}
+
+\begin{equation}
+H_I = \sum_{n=2}^N \frac{U_n}{n!} \sum_{i} (b^\dagger_i)^n (b_i)^n,
+\end{equation}
+where $N$ is the total (even) number of particles, $U_2=0$ and $U_{n>2}=\infty$. Note that $:\prod_{l=1}^n \rho_i:=(b^\dagger_i)^n (b_i)^n$. This is equivalent to the three-body hardcore condition $(b^\dagger_i)^3=0$ and $(b_i)^3=0$.~\cite{Zhu15}
+
+We can compare these results with studies on the Haldane honeycomb lattice model.~\cite{Zhu15, Wang12}  The crucial point is that Haldane pseudopotential is a constant for this state (see appendix A of the paper by Liu et al.~\cite{Liu12}).
+
+\subsubsection{Fermionic Moore-Read state at $\nu=1/2$}
+
+\begin{equation}
+H_I = \sum_{n=2}^N \frac{U_n}{n!} \sum_{i} (c^\dagger_i)^n (c_i)^n,
+\end{equation}
+where $U_2=0$, $U_3=10$ and $U_{n>3}=\infty$.
+
+\subsection{Non-unitary states}
+
+\subsubsection{Bosonic Gaffnian state at $\nu=2/3$}
+
+\subsubsection{Fermionic Gaffnian state at $\nu=2/5$}
+
+For the fermionic Gaffnian state, the topological entanglement entropy is known to be $\gamma=1.44768$.~\cite{Estienne15}
+
+We need to construct a toy Hamiltonian whose ground state is the Gaffnian wavefunction.
+
+A construction of the Gaffnian parent Hamiltonian for the cylinder geometery is outlined in the paper by Lee et~al.~\cite{Lee15}
+
+An explicit form of the bosonic Gaffnian Hamiltonian in terms of derivatives of delta functions is given in the paper by Papic in Eq.~A4.~\cite{Papic14}
+
+The original paper to detail the Gaffnian is by Simon et al.~\cite{Simon07}
+
+
+
+\section{Tuning from effective Abelian to non-Abelian order}
+
+For contested states, such as $\nu=2/5$, we expect to find the Abelian value for the topological entanglement entropy, $\gamma=\ln(\sqrt{5})$, with short-range interactions. After increasing the range of the interactions, we should notice an increase of the entanglement entropy towards the non-Abelian value of $\gamma=1.44768$.
+
+\bibliographystyle{apsrev4-1}
+\bibliography{TEE_notes}
+
+\end{document}
+
